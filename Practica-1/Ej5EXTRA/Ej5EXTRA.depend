@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1679177702 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\ej5extra\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
+1680261979 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica 1\ej5extra\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+
