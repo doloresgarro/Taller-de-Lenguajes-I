@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1682023086 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica 3\ejemplos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

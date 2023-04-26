@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1681751211 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica-3\ejercicio7\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+
