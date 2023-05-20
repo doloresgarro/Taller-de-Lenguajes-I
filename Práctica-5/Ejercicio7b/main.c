@@ -18,11 +18,10 @@ int main()
     char linea[20];
     ptr = fgets(linea, LONG, f);
     while(!feof(f)){
-       fprintf(copia, "%s", linea);
+       fputs(linea, copia);
        ptr = fgets(linea, LONG, f);
     }
     if (ptr != NULL){
-        printf("%s", linea);
         fprintf(copia, "%s", linea);
     }
 

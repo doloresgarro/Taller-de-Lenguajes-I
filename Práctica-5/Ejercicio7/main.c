@@ -19,24 +19,10 @@ int main()
         return 1;
     }
 
-    /*for (int i = 0; i < dimL; i++)
-        fprintf(fcreado, "%s \t", a[i]);
-    fprintf(fcreado, "\n");
-    for (int i = 0; i < dimL; i ++)
-        fprintf(fcreado,"% 2.2f \t\t", v[i].promedio);
-    fprintf(fcreado, "\n");
-    for (int i = 0; i < dimL; i ++)
-        fprintf(fcreado,"% 2.2f \t\t", v[i].max);
-    fprintf(fcreado,"\n");
-    for (int i = 0; i < dimL; i ++)
-        fprintf(fcreado,"% 2.2f \t\t", v[i].min);
-    fprintf(fcreado,"\n");
-*/
-
     char c;
     c = fgetc(f);
     while(!feof(f)){
-       fprintf(copia, "%c", c);
+       fputc(c, copia);
        c = fgetc(f);
     }
 
