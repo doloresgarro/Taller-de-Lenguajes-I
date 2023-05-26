@@ -21,6 +21,7 @@ modificación y 0 en caso contrario
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define CANT 3
 
 typedef struct {
@@ -40,7 +41,7 @@ int actualizarRanking(FILE *, char *, char *, int);
 int main()
 {
     FILE *f, *fbinario;  //lo cargo también en un archivo no binario para ver si esta bien
-    f = fopen("jugadores.txt", "w");
+   /* f = fopen("jugadores.txt", "w");
 
     if (f == NULL) {
         printf("Error al abrir el archivo\n");
@@ -58,19 +59,23 @@ int main()
 
     fclose(f);
     fclose(fbinario);
-
+*/
+    fbinario = fopen("jugadoresbinario.dat", "rb");
     mejorRankingTitulos(&fbinario, CANT);
 
     //Ejercicio 10
     /*Escriba una función que permita actualizar el ranking de un jugador. Dicha función recibe como
 parámetros nombre, apellido y nuevo ranking del jugador y retorna 1 si pudo realizar la
 modificación y 0 en caso contrario*/
-    int nuevoRank;
-    char nombre[20], apellido[20];
-    if (actualizarRanking(fbinario, nombre, apellido, nuevoRank))
+    int nuevoRank = 2;
+    char nombre[20] = "dolores" , apellido[20] = "garro";
+    if (actualizarRanking(fbinario, nombre, apellido, nuevoRank)) {
         printf("Se actualizó el ranking del jugador\n");
+    }
     else
-        printf("No se actualizó el ranking del jugador\n");
+        printf("No se actualizo el ranking del jugador\n");
+
+
 
 
     return 0;
@@ -124,9 +129,23 @@ void mejorRankingTitulos(FILE **fb, int cant) {
 
 int actualizarRanking(FILE *f, char *nombre, char *apellido, int nuevoRank){
     jugadores j;
-    while ((!feof(f)) || ((nombre != j.nombre) && (apellido != j.apellido)){
 
+    //NO SE
+
+    printf("ENTRAAAAAAAAAAAAA\n");
+    //int n = 1;
+    fseek(f, sizeof(jugadores), SEEK_SET);
+    while ((!feof(f)) && ((strcmp(nombre, j.nombre)) && (strcmp(apellido, j.apellido)))){ // strcmp = 1 si no son iguales
+        printf("ENTRAAAAAAAAAAAAA2\n");
+        fseek(f, sizeof(jugadores), SEEK_CUR); //que se posicione al principio
+        fread(&j, sizeof(jugadores), 1, f);
+       // n++;
     }
 
-
+    if ((strcmp(nombre, j.nombre)) && (strcmp(apellido, j.apellido))) { //lo encontro
+          j.ranking = nuevoRank;
+          return 1;
+    }
+    else
+        return 0;
 }
