@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1685557315 source:c:\users\dolores\onedrive\documentos\facultad\taller\practica-6\ejercicio9\imath.c
+
+1685557351 source:c:\users\dolores\onedrive\documentos\facultad\taller\practica-6\ejercicio9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"imath.h"
+
+1685556795 c:\users\dolores\onedrive\documentos\facultad\taller\practica-6\ejercicio9\imath.h
+
