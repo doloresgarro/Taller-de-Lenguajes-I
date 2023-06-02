@@ -15,7 +15,6 @@ g) Destruir el diccionario: libera los recursos del diccionario.
 Una vez implementadas todas las funciones de biblioteca, escriba un programa que permita probarla
 */
 
-//no funcan cargarDesdeArchivo y guardarEnArchivo
 
 
 #include <stdio.h>
@@ -27,6 +26,19 @@ int main() {
 
     nodo *l;
     crearDiccionario(&l);
+     //------------------------------------------------------------
+    FILE *f = fopen("diccionario.txt", "r");
+
+    if (f == NULL){
+        printf("Error al abrir el archivo\n");
+        return 0;
+    }
+
+    cargarDesdeArchivo(&l,f);
+    printf("Imprime diccionario: \n");
+    Imprimir(l);
+    printf("\n");
+
 
     char palabra[20];
     for (int i = 0; i < 4; i ++) {
@@ -64,13 +76,12 @@ int main() {
 
 
     //------------------------------------------------------------
-    FILE *f = fopen("diccionario.txt", "w");
+    FILE *fcreado = fopen("diccionarioNuevo.txt", "w");
 
     if (f == NULL)
         printf("Error al abrir el archivo\n");
     else {
-        cargarDesdeArchivo(l,&f);
-        //guardarEnArchivo(&l, f);
+        guardarEnArchivo(&l, fcreado);
         Imprimir(l);
         printf("\n");
     }
@@ -79,6 +90,8 @@ int main() {
 
     printf("Imprime diccionario despues de liberar: \n");
     Imprimir(l);
+    fclose(f);
+    fclose(fcreado);
 
     return 0;
 }

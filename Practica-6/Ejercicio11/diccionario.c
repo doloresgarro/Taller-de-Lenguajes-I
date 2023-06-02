@@ -3,12 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct lista{
-    char dato[20];
-    struct lista *sig;
-};
-
-typedef struct lista nodo;
+#include "diccionario.h"
 
 
 //Crear un diccionario: inicializa la estructura del diccionario.
@@ -74,20 +69,43 @@ int eliminarPalabra(nodo **l, char dato[]) {
 }
 
 //Cargar desde un archivo: carga un diccionario desde un archivo de texto.
-void cargarDesdeArchivo(nodo *l, FILE **f ) {
+void cargarDesdeArchivo(nodo **l, FILE *f ) {
+    FILE *fcreado = fopen("diccionario.txt", "r");
+
+    if (fcreado == NULL)
+        printf("Error al abrir el archivo");
+
     char palabra[50];
-    fputs(palabra, *f);
-    //fscanf(f, "%s;", palabra); //copio palabra del diccionario
-    agregarPalabra(&l, palabra); // agrego la palabra al diccionario
+    fscanf(fcreado, "%s\n", palabra); //copio palabra del diccionario
+    printf("%s\n", palabra);
+    while (!feof(fcreado)) {
+        agregarPalabra(&(*l), palabra); // agrego la palabra al diccionario
+        fscanf(fcreado, "%s\n", palabra); //copio palabra del diccionario
+        printf("%s\n", palabra);
+    }
+     if (palabra != NULL)
+        agregarPalabra(&(*l), palabra);
 
-
+    fclose(fcreado);
 }
 
 //Guarda un diccionario en un archivo de texto.
 void guardarEnArchivo(nodo **l, FILE *f){
-    nodo *aux = *l;
-    while (aux != NULL)
-        fprintf(f, "%s ", aux->dato);
+    FILE *fcreado = fopen("diccionarioNuevo.txt", "w");
+
+    if (fcreado == NULL)
+        printf("Error al abrir el archivo");
+
+    while (*l != NULL) {
+        fprintf(f, "%s ", (*l)->dato);
+        *l = (*l)->sig;
+    }
+    if ((*l)->dato != NULL)
+        fprintf(f, "%s ", (*l)->dato);
+
+
+
+    fclose(fcreado);
 }
 
 void liberarDiccionario(nodo **l) { //Libera los recursos del diccionario.
