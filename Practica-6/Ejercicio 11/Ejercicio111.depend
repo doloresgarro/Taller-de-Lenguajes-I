@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1685712875 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica-6\ejercicio111\diccionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"diccionario.h"
+
+1685712918 c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica-6\ejercicio111\diccionario.h
+
+1685712947 source:c:\users\dolores\onedrive\documentos\facultad\taller de lenguajes i\practica-6\ejercicio111\main.c
+	<stdio.h>
+	<stdlib.h>
+	"diccionario.h"
+
