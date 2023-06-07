@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1686077608 source:c:\users\dolores\onedrive\documentos\facultad\taller-de-lenguajes-i\ejercicios de parcial\argumentosalmain\main.c
+1686157932 source:c:\users\dolores\onedrive\documentos\facultad\taller-de-lenguajes-i\ejercicios de parcial\argumentosalmain\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 
