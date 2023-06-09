@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <string.h>
+
+enum {cuadrado,triangulo,circulo} F;
+
+typedef struct {
+   char color[20];
+   union {
+     float longC;
+     float lados[2];
+     float radio;
+     } Lado;
+   } Figuras;
+
+void imprimir(Figuras*);
+
+int main(){
+
+   Figuras F;
+   imprimir(&F);
+   return 0;
+
+}
+
+void imprimir(Figuras *F){
+   int num; float area; char nombre[20];
+   printf("Introduzca Figura: ");
+   scanf("%d", &num);
+   switch (num){
+     case cuadrado : strcpy(nombre,"Cuadrado");
+                     printf("Color: ");
+                     scanf("%s",F->color);
+                     printf("Introduzca Longitud del cuadrado: ");
+                     scanf("%f", F->Lado.longC);
+                     area=(F->Lado.longC)*(F->Lado.longC);
+                     printf("Nombre %s | Color: %s | Area: %.2f\n",nombre,F->color,area);
+                     break;
+     case triangulo : strcpy(nombre,"Triangulo");
+                      printf("Color: ");
+                      scanf("%s",F->color);
+                      printf("Introduzca base y altura: ");
+                      scanf("%f",F->Lado.lados[0]);
+                      scanf("%f",F->Lado.lados[1]);
+                      area= ((F->Lado.lados[0])*(F->Lado.lados[1]))/2;
+                      printf("Nombre %s | Color: %s | Area: %.2f\n",nombre,F->color,area);
+                      break;
+
+     case circulo : strcpy(nombre,"Circulo");
+                    printf("Introduzca el color: ");
+                    scanf("%s",F->color);
+                    printf("Introduzca el radio: ");
+                    scanf("%f",F->Lado.radio);
+                    area= ((3.14)*F->Lado.radio)*((3.14)*F->Lado.radio);
+                    printf("Nombre %s | Color: %s | Area: %.2f\n",nombre,F->color,area);
+                    break;
+
+
+   }
+}

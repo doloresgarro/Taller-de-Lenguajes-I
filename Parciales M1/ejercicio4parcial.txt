@@ -1,0 +1,26 @@
+//ejercicio 4 parcial
+#include <stdio.h>
+enum TipoTalle {
+ CHICO,
+ MEDIANO,
+ GRANDE
+};
+void verTalles(enum TipoTalle [], int );
+int main(){
+ enum TipoTalle V[8]={CHICO, CHICO,GRANDE, MEDIANO,
+ CHICO, CHICO, GRANDE, GRANDE};
+ verTalles(V,8);
+ return 0;
+}
+void verTalles(enum TipoTalle V[], int n){
+ int i, suma[3]={0}, idMax = 0;
+ for (i=0; i<n; i++){
+ suma[V[i]]++;
+ if (suma[idMax]<suma[V[i]])
+ idMax = V[i];
+ }
+ printf("Totales de cada talle: ");
+ for (i=0; i<3; i++)
+ printf("%d ", suma[i] );
+ printf("\nEl talle que mas veces aparece es el %d ", idMax);
+}
